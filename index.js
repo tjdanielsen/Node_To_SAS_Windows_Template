@@ -10,7 +10,7 @@ const fs = require('fs')
 const app = express();
 const port = 8080;
 const htmlPath = __dirname+'\\HTML\\'; /* __dirname resolves to project folder */
-const mongodb_uri = "mongodb+srv://TimMongoUser:Euler6764@cluster0.qhbri.mongodb.net/portal?retryWrites=true&w=majority";
+const mongodb_uri = " ";  /* get this MongoDB connect string from the original index.js file on Tim's computer */
 const MongoClient = mongo.MongoClient
 const store = new MongoDBStore({  /* this is the session store written to MongoDB */
     uri: mongodb_uri,
