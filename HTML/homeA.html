@@ -14,7 +14,7 @@
         <input type="hidden" name="secondP" value="99" />
     </form>
 
-    <div style="margin-top:10px;"><button type="button" class="btn btn-sm align-middle" onclick="getData('userList')">Call MongoDB to get a JSON array of registered users</button></div>
+    <div style="margin-top:10px;"><button type="button" class="btn btn-sm align-middle" onclick="getData('userList')">Call MySQL to get a JSON array of registered users</button></div>
     <div style="margin-top:10px;"><button type="button" class="btn btn-sm align-middle" onclick="document.adminform.ToDo.value='sasJ';getData('sasJ')">Run SAS program that returns JSON Data from PROC JSON</button></div>
     <div style="margin-top:10px;"><button type="button" class="btn btn-sm align-middle" onclick="document.adminform.ToDo.value='sasT';getData('sasT')">Run SAS program that returns text from a Data _NULL_ step</button></div>
 
@@ -23,7 +23,7 @@
     <script>
         function getData(which) {
             var thisrequest = $('#adminform').serialize();
-            if (which === 'userList') $.post('/callMongo', thisrequest, function(result) {console.log(result)} )
+            if (which === 'userList') $.post('/callMySQL', thisrequest, function(result) {console.log(result)} )
             else if (which === "sasJ") $.post('/callSas', thisrequest, function(result) {
                 sasdata = JSON.parse(result)
                 console.log(sasdata)

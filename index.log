@@ -1,4 +1,4 @@
-1                                         The SAS System              12:23 Monday, April 21, 2025
+1                                         The SAS System              16:14 Monday, April 21, 2025
 
 NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
 NOTE: SAS (r) Proprietary Software 9.4 (TS1M7) 
@@ -20,8 +20,8 @@ NOTE: Additional host information:
  X64_10PRO WIN 10.0.26100  Workstation
 
 NOTE: SAS initialization used:
-      real time           0.43 seconds
-      cpu time            0.28 seconds
+      real time           0.49 seconds
+      cpu time            0.29 seconds
       
 1          /* Program is called by NodeJS.  It initializes a batch SAS session and calls the macro
 1        !  passed as ToDo in -sysparm */
@@ -52,10 +52,10 @@ ToDo=sasT,secondP=99
 22         run;
 
 NOTE: DATA statement used (Total process time):
-      real time           0.01 seconds
-2                                         The SAS System              12:23 Monday, April 21, 2025
+      real time           0.00 seconds
+2                                         The SAS System              16:14 Monday, April 21, 2025
 
-      cpu time            0.00 seconds
+      cpu time            0.03 seconds
       
 
 23         %put _user_ ;
@@ -75,7 +75,7 @@ GLOBAL TODO sasT
 NOTE: The file "c:\users\67tim\onedrive\nodeTemplateW\outfile.txt" is:
       Filename=c:\users\67tim\onedrive\nodeTemplateW\outfile.txt,
       RECFM=V,LRECL=32767,File Size (bytes)=0,
-      Last Modified=21Apr2025:12:23:10,
+      Last Modified=21Apr2025:16:14:26,
       Create Time=17Feb2023:12:40:53
 
 NOTE: 1 record was written to the file "c:\users\67tim\onedrive\nodeTemplateW\outfile.txt".
@@ -96,7 +96,7 @@ MPRINT(TODO):   RUN;
 NOTE: The file "c:\users\67tim\onedrive\nodeTemplateW\outfile.txt" is:
       Filename=c:\users\67tim\onedrive\nodeTemplateW\outfile.txt,
       RECFM=V,LRECL=32767,File Size (bytes)=0,
-      Last Modified=21Apr2025:12:23:10,
+      Last Modified=21Apr2025:16:14:26,
       Create Time=17Feb2023:12:40:53
 
 NOTE: 1 record was written to the file "c:\users\67tim\onedrive\nodeTemplateW\outfile.txt".
@@ -104,15 +104,15 @@ NOTE: 1 record was written to the file "c:\users\67tim\onedrive\nodeTemplateW\ou
       The maximum record length was 34.
 NOTE: DATA statement used (Total process time):
       real time           0.00 seconds
-      cpu time            0.01 seconds
+      cpu time            0.00 seconds
       
 
 35         
-3                                         The SAS System              12:23 Monday, April 21, 2025
+3                                         The SAS System              16:14 Monday, April 21, 2025
 
 36         ODS _ALL_ CLOSE;
 NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
 NOTE: The SAS System used:
-      real time           0.48 seconds
+      real time           0.53 seconds
       cpu time            0.35 seconds
       
