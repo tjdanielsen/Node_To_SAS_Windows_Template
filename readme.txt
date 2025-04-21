@@ -13,5 +13,5 @@ The home page has the following functionality...
 To run the template application, perform the following steps...
 0) Install NodeJS on your system if you haven't already done so.
 1) Open command prompt and go to the directory containing the template
-2) Start the http web services by typing "node index.js" at the command prompt
+2) Start the http web services by typing "node index.js" or "node index_mysqlStore.js" at the command prompt
 3) Open the app in your browser -- http://localhost:8080
