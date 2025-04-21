@@ -1,0 +1,19 @@
+{
+  "name": "nodeucsf",
+  "version": "1.0.0",
+  "description": "UCSF's Alameda County Training Development Unit Portal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tim Danielsen",
+  "license": "ISC",
+  "dependencies": {
+    "connect-mongodb-session": "^3.1.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mongodb": "^4.13.0"
+  },
+  "devDependencies": {}
+}

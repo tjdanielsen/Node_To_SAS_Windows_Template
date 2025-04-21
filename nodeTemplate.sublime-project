@@ -1,0 +1,32 @@
+{
+	/*"folders":
+	[
+		{
+			"path": "\\\\plexus\\ProjectsData\\Projects\\Kaiser DOR\\nmds6\\report",
+		},
+		{
+			"path": "\\\\plexus\\Projects\\Kaiser DOR\\nmds6\\externalHTML",
+		},
+		{
+			"path": "\\\\plexus\\Projects\\Kaiser DOR\\nmds6\\maclib",
+		},
+		{
+			"path": "\\\\plexus\\Projects\\Kaiser DOR\\nmds6\\programs",
+		},
+		{
+			"path": "\\\\plexus\\Projects\\Kaiser DOR\\nmds6",
+		},
+		{
+			"path": "\\\\plexus\\Projects\\Kaiser DOR\\nmds6\\externalHTMLreport",
+		},
+		{
+			"path": "\\\\plexus\\Projects\\Kaiser DOR\\nmds6\\maclibreport",
+		},
+	],*/
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+}

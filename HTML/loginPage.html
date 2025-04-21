@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Health Information Solutions">
+    <link rel="icon" href="">
+
+    <title>Node JS Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/CSS/defaultStyles.css">
+
+    <script>
+      function validate(form) {
+        $("#msgButton").attr('onclick',"");
+        var errors = false;
+        if (form.ToDo.value == "accclogon") {
+        	if (isEmpty(removeSpaces(form.logonid.value)) || isEmpty(removeSpaces(form.password.value))) {
+        		errors = true;
+			    var alertmsg = "Specify your e-mail address and password to logon.<br />Please try again.";
+		    }
+        }
+        if (errors) openMsg(alertmsg,"close");
+        else form.submit();
+    }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="/JS/openMsg.js"></script>
+    <script type="text/javascript" src="/JS/isEmpty.js"></script>
+    <script type="text/javascript" src="/JS/check.js"></script>
+    <script type="text/javascript" src="/JS/removeSpaces.js"></script>
+
+    <script>
+     function doLogIn() {
+         $.post('/LogIn',$('#accclogon').serialize(),function(response) {
+             currentText=response;
+             if (response === "No user found") {
+                 openMsg("Incorrect Login or Password",'close')
+                 document.accclogon.logonid.value = ""
+                 document.accclogon.password.value = ""
+             }
+             else $('body').html(response)
+         })
+     }
+    </script>
+
+  </head>
+
+  <body>
+    <div class="text-center"><img src="/IMG/generic.svg" style="height:80px;margin-top:20px"></div>
+    <div class="container-fluid pt-1" id="logonbox">
+         <div class="row">
+             <div class="col-12 pt-sm-1" style="min-width:300px;">
+                  <form name="accclogon" id="accclogon" method="post" action="/cgi-bin/broker.cgi" autocomplete="off" accept-charset="UTF-8">
+                  <div class="pt-sm-2 text-center pb-3"><h5><strong></strong></h5></div>
+                  <div class="input-group mb-3" style="max-width:360px;margin-left:auto;margin-right:auto;">
+                       <span class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span></span>
+                       <input class="form-control" type="email" placeholder="Email address" id="logonid" name="logonid" onchange="check(this.form,'logonid');">
+                  </div>
+                  <div class="input-group mb-3" style="max-width:360px;margin-left:auto;margin-right:auto;">
+                       <span class="input-group-prepend"><span class="input-group-text"><i class="fa fa-key fa-fw"></i></span></span>
+                       <input class="form-control" type="password" maxsize="40" placeholder="Password" name="password" onchange="check(this.form,'password');">
+                  </div>
+                  <div class="text-center mb-3">
+                      <button type="button" class="btn btn-sm align-middle" id="sbmtlogon" name="submitlogon" onclick="doLogIn();">Log In</button>
+                  </div>
+                  <input type="hidden" name="ToDo" value="accclogon" />
+                  </form>
+             </div>
+         </div>
+    </div>
+
+    <div style="width:70%;max-width:1100px;margin-left:auto;margin-right:auto;margin-top:25px;">
+    <p>
+    This is a web application template using the following stack...
+    <ol>
+    <li> NodeJS - provides http web services (see index.js for node packages that are required - express is the key package)</li>
+    <li> MongoDB - contains authorization (login) database and session management database</li>
+    <li> SAS - called in batch mode from NodeJS (SAS/IntrNet and SAS Strored Processes are not used)</li>
+    </ol>
+    </p>
+
+    <p>
+    Once logged in, the application loads a home page based on the user type (basic or admin). The home page has the following functionality...
+    <ol>
+    <li>Call SAS to retrieve JSON or text (basic and admin user types)</li>
+    <li>Call MongoDB to retrieve JSON (admin user type)</li>
+    <li>Logout</li>
+    </ol>
+    </p>
+
+    <p>
+    To login, use the following credentials...
+    <ol>
+    <li>67timmyd@gmail.com  blXG0504   (basic user)</li>
+    <li>tim.danielsen@health-info-solutions.com  blXG0504  (admin user)</li>
+    </ol>
+    </p>
+    </div>
+
+<!-- Message Modal -->
+    <button id="openMsg" type="button" class="btn btn-light" data-toggle="modal" data-target="#message" style="display:none;"> </button>
+    <div class="modal fade" id="message">
+      <div class="modal-dialog modal-dialog-centered modal-md" style="position:relative;left:0px;">
+        <div class="modal-content" style="position:relative;left:0px;">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" id="msgTitle"></h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg"><div id="msgBody">Change with document.getElementById('msgBody').innerHTML</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button id="msgButton" type="button" class="btn btn-sm align-middle" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+</body>
+
+</html>
