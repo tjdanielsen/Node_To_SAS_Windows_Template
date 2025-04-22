@@ -20,14 +20,22 @@
     <button type="button" class="btn btn-sm align-middle" style="margin-top:20px;"><a href="/logout">Logout</a></button>
 
     <script>
+        function expired(result) {
+            if (result === 'expired') {
+                let alertmsg = "You session has expired.  You must login again."
+                let buttonObject = { text: "Return To Login Page", clickEvent: "window.open('http://localhost:8080', '_self')" }
+                openMsg(alertmsg, "close", buttonObject)
+            } 
+            else return false
+        }
         /* Assumes try/catch block in /callSas route catches any errors and returns {SASerror:"An error occurred in the SAS child_process"} */
         function getData(which) {
             var thisrequest = $('#basicform').serialize();
-            if (which === "sasJ") $.post('/callSas', thisrequest, function(result) {
-                console.log(result)
-            },"json")
+            if (which === "sasJ") $.post('/callSas', thisrequest, function(result) {                
+                if ( !expired(result) ) {console.log(JSON.parse(result))} 
+            })
             else if (which === 'sasT') $.post('/callSas', thisrequest, function(result) {
-                console.log(result)
+                if ( !expired(result) ) console.log(result)                
             },"text")
         }
 
@@ -47,4 +55,34 @@
         }
         */
     </script>
+
+    <!-- Message Modal -->
+    <button id="openMsg" type="button" class="btn btn-light" data-toggle="modal" data-target="#message" style="display:none;"> </button>
+    <div class="modal fade" id="message">
+      <div class="modal-dialog modal-dialog-centered modal-md" style="position:relative;left:0px;">
+        <div class="modal-content" style="position:relative;left:0px;">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" id="msgTitle"></h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg"><div id="msgBody">Change with document.getElementById('msgBody').innerHTML</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button id="msgButton" type="button" class="btn btn-sm align-middle" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
