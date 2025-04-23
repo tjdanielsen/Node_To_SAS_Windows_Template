@@ -2,6 +2,7 @@ This directory contains a web application template using the following stack...
 1) NodeJS - provides http web services (see index.js for node packages that are required - express is the key package)
 2) MongoDB - contains authorization (login) database and session management database (use index.js)
 or 2a) MySQL - contains authorization (login) datablase and session management database (use index_mysqlStore.js)
+or 2b) MySQL + Sequelize ORM - contains authorization (login) datablase and session management database (use index_sequelize.js)
 3) SAS - called in batch mode from NodeJS (SAS IntrNet is not used)
 
 The application has an login page using email address as loginID.  Once logged in, the application loads a home page based on the user type (basic or admin).
