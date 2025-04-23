@@ -17,21 +17,6 @@
 
     <link rel="stylesheet" type="text/css" href="/CSS/defaultStyles.css">
 
-    <script>
-      function validate(form) {
-        $("#msgButton").attr('onclick',"");
-        var errors = false;
-        if (form.ToDo.value == "accclogon") {
-        	if (isEmpty(removeSpaces(form.logonid.value)) || isEmpty(removeSpaces(form.password.value))) {
-        		errors = true;
-			    var alertmsg = "Specify your e-mail address and password to logon.<br />Please try again.";
-		    }
-        }
-        if (errors) openMsg(alertmsg,"close");
-        else form.submit();
-    }
-    </script>
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
@@ -66,16 +51,15 @@
                   <div class="pt-sm-2 text-center pb-3"><h5><strong></strong></h5></div>
                   <div class="input-group mb-3" style="max-width:360px;margin-left:auto;margin-right:auto;">
                        <span class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope fa-fw"></i></span></span>
-                       <input class="form-control" type="email" placeholder="Email address" id="logonid" name="logonid" onchange="check(this.form,'logonid');">
+                       <input class="form-control" type="email" placeholder="Email address" id="logonid" name="userid" onchange="check(this.form,'logonid');">
                   </div>
                   <div class="input-group mb-3" style="max-width:360px;margin-left:auto;margin-right:auto;">
                        <span class="input-group-prepend"><span class="input-group-text"><i class="fa fa-key fa-fw"></i></span></span>
-                       <input class="form-control" type="password" maxsize="40" placeholder="Password" name="password" onchange="check(this.form,'password');">
+                       <input class="form-control" type="password" maxsize="40" placeholder="Password" name="pwd" onchange="check(this.form,'password');">
                   </div>
                   <div class="text-center mb-3">
                       <button type="button" class="btn btn-sm align-middle" id="sbmtlogon" name="submitlogon" onclick="doLogIn();">Log In</button>
-                  </div>
-                  <input type="hidden" name="ToDo" value="accclogon" />
+                  </div>                  
                   </form>
              </div>
          </div>
@@ -86,7 +70,9 @@
     This is a web application template using the following stack...
     <ol>
     <li> NodeJS - provides http web services (see index.js for node packages that are required - express is the key package)</li>
-    <li> MongoDB - contains authorization (login) database and session management database</li>
+    <li> MongoDB - contains authorization (login) database and session management database (use index.js)
+    <li> Or MySQL - contains authorization (login) database and session management database (use index_mysqlStore.js)    
+    <li> Or MySQL + Sequelize ORM - contains authorization (login) datablase and session management database (use index_sequelize.js)
     <li> SAS - called in batch mode from NodeJS (SAS/IntrNet and SAS Strored Processes are not used)</li>
     </ol>
     </p>

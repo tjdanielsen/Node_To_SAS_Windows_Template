@@ -68,7 +68,7 @@ app.get('/', function (req, res) {
 /* Login request */
 app.post('/LogIn', function(req, res) {
     let queryString = 'SELECT * FROM `users` WHERE `userid` = ? AND `pwd` = ?'
-    db.query(queryString, [req.body.logonid, req.body.password], function (err, result) {
+    db.query(queryString, [req.body.userid, req.body.pwd], function (err, result) {
         if (err) throw err
         if (result.length === 1) { /* valid login */
             req.session.email = result[0].userid;            
